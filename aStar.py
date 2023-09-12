@@ -1,25 +1,20 @@
 from simpleai.search import SearchProblem, astar
 
 GOAL = 'HELLO WORLD'
+
 class HelloProblem(SearchProblem):
     def actions(self, state):
-        if len(state) < len(GOAL):
-            return list(' ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-        else:
-            return []
-        
+        return list(' ABCDEFGHIJKLMNOPQRSTUVWXYZ') if len(state) < len(GOAL) else []
+
     def result(self, state, action):
         return state + action
-    
+
     def is_goal(self, state):
         return state == GOAL
-    
+
     def heuristic(self, state):
-        wrong = sum([i if state[i] != GOAL[i] else 0
-                     for i in range(len(state))])
-        missing = len(GOAL) - len(state)
-        return wrong + missing
-    
+        return sum(i for i, char in enumerate(state) if char != GOAL[i]) + len(GOAL) - len(state)
+
 problem = HelloProblem(initial_state='')
 result = astar(problem)
 print(result.state)
