@@ -1,19 +1,17 @@
 graph = {
-            '5' : ['3','7'],
-            '3' : ['2','4'],
-            '7' : ['8'],
-            '2' : [],
-            '4' : ['8'],
-            '8' : []
-        }
+    '5': ['3', '7'],
+    '3': ['2', '4'],
+    '7': ['8'],
+    '2': [],
+    '4': ['8'],
+    '8': []
+}
 
-visited = set()
-
-def dfs(visited, graph, node):
+def dfs(node):
     if node not in visited:
         print(node)
         visited.add(node)
-        for nextt in graph[node]:
-            dfs(visited, graph, nextt)
+        [dfs(nextt) for nextt in graph[node]]
 
-dfs(visited, graph, '5')
+visited = set()
+dfs('5')
