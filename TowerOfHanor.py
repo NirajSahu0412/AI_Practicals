@@ -1,12 +1,11 @@
-def towerOfHanor(n, sPole, dPole, iPole):
-    if(n == 1):
-        print("Move disk 1 from pole", sPole, " 2 Pole ", dPole)
+def towerOfHanoi(n, sourcePole, destinationPole, auxiliaryPole):
+    if n == 1:
+        print("Move disk 1 from pole", sourcePole, "to pole", destinationPole)
         return
 
-    towerOfHanor(n-1, sPole, dPole, iPole)
-    print("Move Disk ", n, " From Pole ", sPole, " to Pole ", dPole)
+    towerOfHanoi(n - 1, sourcePole, auxiliaryPole, destinationPole)
+    print("Move disk", n, "from pole", sourcePole, "to pole", destinationPole)
+    towerOfHanoi(n - 1, auxiliaryPole, destinationPole, sourcePole)
 
-    towerOfHanor(n-1, iPole, dPole, sPole)
-
-n = 10
-towerOfHanor(n, 'A', 'C', 'B')
+n = 3
+towerOfHanoi(n, 'A', 'C', 'B')
