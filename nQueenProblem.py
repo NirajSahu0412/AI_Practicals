@@ -1,36 +1,39 @@
-print("Enter the No. of Queens : ")
-n = int(input())
-
-#Chess Board
-board = [[0] * n for _ in range(n)]
-
-def isAttacked(i, j):
-    for k in range(0, n):
-        #Checking rows and column
-        if (board[i][j] == 1):
+def isAttacked(i, j, board):
+    n = len(board)
+    for k in range(n):
+        if board[i][k] == 1 or board[k][j] == 1:
             return True
 
-    for k in range(0, n):
-        for l in range(0, n):
-            #Checking Diagonals
-            if (k + l == i + j) or (k - l == i - j):
-                if(board[k][l] == 1):
-                    return True
+    for k in range(n):
+        for l in range(n):
+            if (k + l == i + j or k - l == i - j) and board[k][l] == 1:
+                return True
+
+    return False
+
+def nQueen(n):
+    board = [[0] * n for _ in range(n)]
+
+    def solve(p):
+        if p == 0:
+            return True
+
+        for i in range(n):
+            for j in range(n):
+                if not isAttacked(i, j, board) and board[i][j] != 1:
+                    board[i][j] = 1
+                    if solve(p - 1):
+                        return True
+                    board[i][j] = 0
         return False
 
-def nQueen(p):
-    if(p == 0):
-        return True
-    
-    for i in range(0, n):
-        for j in range(0, n):
-            if(not(isAttacked(i, j))) and (board[i][j] != 1):
-                board[i][j] == 1
-                if (nQueen(p - 1) == True):
-                    return True
-                board[i][j] = 0
-        return False
-    
+    if solve(n):
+        for row in board:
+            print(row)
+    else:
+        print("No solution found.")
+
+
+print("Enter the No. of Queens:")
+n = int(input())
 nQueen(n)
-for i in board:
-    print(i)
