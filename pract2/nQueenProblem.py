@@ -11,6 +11,7 @@ def isAttacked(i, j, board):
 
     return False
 
+
 def nQueen(n):
     board = [[0] * n for _ in range(n)]
 
@@ -37,3 +38,11 @@ def nQueen(n):
 print("Enter the No. of Queens:")
 n = int(input())
 nQueen(n)
+
+# Output:
+# Enter the No. of Queens:
+# 4
+# [0, 1, 0, 0]
+# [0, 0, 0, 1]
+# [1, 0, 0, 0]
+# [0, 0, 1, 0]

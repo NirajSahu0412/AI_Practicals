@@ -1,7 +1,9 @@
 import random
 
+
 def objectiveFunction(x):
     return -(x - 15 * x + 10)
+
 
 def hillClimbing(maxIteration=1000, stepSize=0.1):
     currentSolution = random.uniform(0, 6)
@@ -20,3 +22,7 @@ def hillClimbing(maxIteration=1000, stepSize=0.1):
 bestSolution, bestValue = hillClimbing()
 print(bestSolution)
 print(bestValue)
+
+# Output:
+# 5.999896473535772
+# 73.99855062950081

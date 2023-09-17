@@ -1,10 +1,11 @@
 import os
 import time
 
-board = [' '] * 10
+board = [" "] * 10
 player = 1
 Game = 0
-Mark = 'X'
+Mark = "X"
+
 
 def DrawBoard():
     print(f" {board[1]} | {board[2]} | {board[3]} ")
@@ -14,8 +15,10 @@ def DrawBoard():
     print(f" {board[7]} | {board[8]} | {board[9]} ")
     print("   |   |   ")
 
+
 def CheckPosition(x):
-    return board[x] == ' '
+    return board[x] == " "
+
 
 def CheckWin():
     global Game
@@ -27,10 +30,14 @@ def CheckWin():
         if board[i] == board[i + 3] == board[i + 6] == Mark:
             Game = 1
             return
-    if board[1] == board[5] == board[9] == Mark or board[3] == board[5] == board[7] == Mark:
+    if (
+        board[1] == board[5] == board[9] == Mark
+        or board[3] == board[5] == board[7] == Mark
+    ):
         Game = 1
-    if ' ' not in board[1:]:
+    if " " not in board[1:]:
         Game = -1
+
 
 print("Tic-Tac-Toe Game")
 print("Player 1 [X] --- Player 2 [O]\n")
@@ -38,20 +45,28 @@ print("Please Wait...")
 time.sleep(1)
 
 while Game == 0:
-    os.system('cls')
+    os.system("cls")
     DrawBoard()
     print(f"Player {player}'s chance")
-    Mark = 'X' if player % 2 != 0 else 'O'
+    Mark = "X" if player % 2 != 0 else "O"
     choice = int(input("Enter the position between [1-9] where you want to mark: "))
-    
+
     if 1 <= choice <= 9 and CheckPosition(choice):
         board[choice] = Mark
         player += 1
         CheckWin()
 
-os.system('cls')
+os.system("cls")
 DrawBoard()
 if Game == -1:
     print("Game Draw")
 else:
     print(f"Player {2 - (player % 2)} Won")
+
+# Output:
+# Tic-Tac-Toe Game
+# Player 1 [X] --- Player 2 [O]
+#
+# Please Wait...
+
+# run in your console or contact Smit Shah - 4455,  for output screenshot
