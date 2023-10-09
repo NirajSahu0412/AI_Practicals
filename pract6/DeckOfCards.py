@@ -9,10 +9,6 @@ deck = list(itertools.product(ranks, suits))
 random.shuffle(deck)
 
 
-def is_face_card(card):
-    return card[0] in ['Jack', 'Queen', 'King']
-
-
 for card in deck:
     card_rank, card_suit = card
     print(f"{card_rank} of {card_suit}")
