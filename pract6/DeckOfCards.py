@@ -1,20 +1,74 @@
+import itertools
 import random
 
+suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
+ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
 
-def shuffle(deck):
-    random.shuffle(deck)
+
+deck = list(itertools.product(ranks, suits))
+random.shuffle(deck)
 
 
-deck = list(range(52))
-shuffle(deck)
-for i in range(52):
-    print(deck[i], end=" ")
-    if i % 13 == 12:
-        print()
+def is_face_card(card):
+    return card[0] in ['Jack', 'Queen', 'King']
+
+
+for card in deck:
+    card_rank, card_suit = card
+    print(f"{card_rank} of {card_suit}")
+
 
 
 # Output:
-# 37 4 9 32 14 25 27 21 26 18 12 41 50
-# 38 22 23 15 33 8 44 1 17 24 45 6 7
-# 48 49 36 46 10 16 34 19 3 28 40 51 13
-# 29 43 47 5 11 20 39 35 42 31 0 30 2
+# 8 of Clubs
+# 7 of Diamonds
+# 4 of Diamonds
+# Ace of Spades
+# 6 of Clubs
+# 4 of Spades
+# 3 of Hearts
+# 5 of Spades
+# 10 of Hearts
+# 6 of Spades
+# Ace of Hearts
+# 3 of Diamonds
+# Queen of Clubs
+# 7 of Hearts
+# 2 of Hearts
+# 4 of Hearts
+# 7 of Clubs
+# Queen of Spades
+# Queen of Diamonds
+# 9 of Diamonds
+# Jack of Spades
+# King of Spades
+# King of Diamonds
+# Jack of Diamonds
+# King of Clubs
+# 8 of Hearts
+# 2 of Clubs
+# Queen of Hearts
+# 2 of Spades
+# 10 of Spades
+# Ace of Diamonds
+# 5 of Clubs
+# Ace of Clubs
+# 2 of Diamonds
+# 8 of Diamonds
+# 4 of Clubs
+# 7 of Spades
+# 3 of Clubs
+# 10 of Clubs
+# 6 of Diamonds
+# 6 of Hearts
+# 8 of Spades
+# 10 of Diamonds
+# 3 of Spades
+# Jack of Hearts
+# 5 of Hearts
+# 9 of Clubs
+# Jack of Clubs
+# 5 of Diamonds
+# King of Hearts
+# 9 of Hearts
+# 9 of Spades
