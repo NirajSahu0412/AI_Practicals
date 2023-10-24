@@ -1,14 +1,14 @@
 MAX, MIN = 1000, -1000
 
 
-def minimax(depth, nodeIndex, alpha, beta, maximizingPlayer, values):
+def minimax(depth, nodeIndex, alpha, beta, maximizingPlayer, value):
     if depth == 3:
-        return values[nodeIndex]
+        return value[nodeIndex]
 
     if maximizingPlayer:
         best = MIN
         for i in range(2):
-            val = minimax(depth + 1, nodeIndex * 2 + i, alpha, beta, False, values)
+            val = minimax(depth + 1, nodeIndex * 2 + i, alpha, beta, False, value)
             best = max(best, val)
             alpha = max(alpha, best)
             if beta <= alpha:
@@ -17,7 +17,7 @@ def minimax(depth, nodeIndex, alpha, beta, maximizingPlayer, values):
     else:
         best = MAX
         for i in range(2):
-            val = minimax(depth + 1, nodeIndex * 2 + i, alpha, beta, True, values)
+            val = minimax(depth + 1, nodeIndex * 2 + i, alpha, beta, True, value)
             best = min(best, val)
             beta = min(beta, best)
             if beta <= alpha:

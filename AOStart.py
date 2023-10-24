@@ -1,4 +1,3 @@
-# Cost to find the AND and OR path
 def calculate_path_cost(H, condition, weight=1):
     cost = {}
     if "AND" in condition:
